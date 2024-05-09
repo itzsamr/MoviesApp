@@ -96,3 +96,4 @@ Inner Join Directors
 on Movies.DirectorId = Directors.DirectorId
 
 
+Select * from Movies

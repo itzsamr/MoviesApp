@@ -18,4 +18,12 @@ cursor = conn.cursor()
 cursor.execute("Select 1")
 print("DB connection is successful🎉")
 
-print("Hello Word!")
+
+def read_movies():
+    cursor.execute("Select * from Movies")
+    movies = cursor.fetchall()
+    for movie in movies:
+        print(movie)
+
+
+read_movies()
