@@ -59,6 +59,7 @@ def update_movie():
 
 
 if __name__ == "__main__":
+    print("\nWelcome to the Movies Application🎉")
     while True:
         print("\n1. Read Movies")
         print("2. Create Movie")
