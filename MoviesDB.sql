@@ -83,4 +83,16 @@ INSERT INTO MovieActors (MovieId, ActorId) VALUES
 (11, 7), -- Pulp Fiction: Brad Pitt
 (12, 1); -- Django Unchained: Leonardo DiCaprio
 
+Select * from Movies
+Inner Join Directors 
+on Movies.DirectorId = Directors.DirectorId
+ 
+Select * from Movies
+Inner Join MovieActors 
+on Movies.MovieId = MovieActors.MovieId
+Inner Join Actors
+on Actors.ActorId = MovieActors.ActorId
+Inner Join Directors
+on Movies.DirectorId = Directors.DirectorId
+
 
