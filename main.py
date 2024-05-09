@@ -66,7 +66,7 @@ if __name__ == "__main__":
         print("4. Delete Movie")
         print("5. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
 
         if choice == "1":
             read_movies()
