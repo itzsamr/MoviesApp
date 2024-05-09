@@ -12,5 +12,10 @@ conn_str = (
 
 print(conn_str)
 
+conn = pyodbc.connect(conn_str)
+cursor = conn.cursor()
+
+cursor.execute("Select 1")
+print("DB coonection is successful🎉")
 
 print("Hello Word!")
