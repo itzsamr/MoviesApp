@@ -1,1 +1,1 @@
-print("Welcome to the movies app")
+print("Hello Word!")
