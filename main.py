@@ -16,6 +16,6 @@ conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
 cursor.execute("Select 1")
-print("DB coonection is successful🎉")
+print("DB connection is successful🎉")
 
 print("Hello Word!")
