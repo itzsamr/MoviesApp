@@ -21,39 +21,62 @@ print("DB connection is successful🎉")
 
 def read_movies():
     cursor.execute("Select * from Movies")
-    # movies = cursor.fetchall()
-    # for movie in movies:
-    #     print(movie)
-
-    # Get data one row at a time
     for row in cursor:
         print(row)
 
 
-# Task 1
-# Get the data from the user
-# Clue: Use arguments
-def create_movie(Title, Year, DirectorId):
+def create_movie():
+    Title = input("Enter the title of the movie: ")
+    Year = int(input("Enter the year of release: "))
+    DirectorId = int(input("Enter the director ID: "))
+
     cursor.execute(
         "INSERT INTO Movies (Title, Year, DirectorId) VALUES (?, ?, ?)",
         (Title, Year, DirectorId),
     )
-    conn.commit()  # Permanent storing | If no commit then no data
+    conn.commit()
 
 
-# Task 2
-# Delete a movie from the db by getting the id from user
-def delete_movie(id):
-    cursor.execute("DELETE FROM Movies WHERE MovieId = ?", movie_id)
+def delete_movie():
+    movie_id = int(input("Enter the Movie_Id to be deleted: "))
+    cursor.execute("DELETE FROM Movies WHERE MovieId = ?", (movie_id,))
     conn.commit()
     print("Movie deleted successfully.")
 
 
+def update_movie():
+    movie_id = int(input("Enter the Movie_Id to be updated: "))
+    new_title = input("Enter the new title of the movie: ")
+    new_year = int(input("Enter the new year of release: "))
+    new_director_id = int(input("Enter the new director ID: "))
+
+    cursor.execute(
+        "UPDATE Movies SET Title = ?, Year = ?, DirectorId = ? WHERE MovieId = ?",
+        (new_title, new_year, new_director_id, movie_id),
+    )
+    conn.commit()
+    print("Movie updated successfully.")
+
+
 if __name__ == "__main__":
-    # Title = input("Enter the title of the movie: ")
-    # Year = int(input("Enter the year of release: "))
-    # DirectorId = int(input("Enter the director ID: "))
-    # create_movie(Title, Year, DirectorId)
-    read_movies()
-    movie_id = int(input("Enter the Movie_Id to be deleted: "))
-    delete_movie(movie_id)
+    while True:
+        print("\n1. Read Movies")
+        print("2. Create Movie")
+        print("3. Update Movie")
+        print("4. Delete Movie")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            read_movies()
+        elif choice == "2":
+            create_movie()
+        elif choice == "3":
+            update_movie()
+        elif choice == "4":
+            delete_movie()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
