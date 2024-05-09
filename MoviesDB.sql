@@ -97,3 +97,5 @@ on Movies.DirectorId = Directors.DirectorId
 
 
 Select * from Movies
+
+
