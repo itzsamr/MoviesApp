@@ -14,7 +14,7 @@ This is a simple web application built with Streamlit that allows users to inter
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your-username/streamlit-movies-app.git
+    git clone https://github.com/itzsamr/MoviesApp.git
     ```
 
 2. Install the required dependencies:
@@ -26,7 +26,7 @@ This is a simple web application built with Streamlit that allows users to inter
 3. Run the Streamlit app:
 
     ```bash
-    streamlit run app.py
+    streamlit run streamlit_main.py
     ```
 
 4. Open your web browser and navigate to `http://localhost:8501` to access the application.
