@@ -1,6 +1,7 @@
 import pyodbc
+from tabulate import tabulate
 
-server_name = "SAMAR\MSSQLSERVER01"
+server_name = "SAMAR\\MSSQLSERVER01"
 database_name = "MoviesDB"
 
 conn_str = (
@@ -21,8 +22,9 @@ print("DB connection is successful🎉")
 
 def read_movies():
     cursor.execute("Select * from Movies")
-    for row in cursor:
-        print(row)
+    movies_data = [list(row) for row in cursor.fetchall()]
+    headers = ["MovieId", "Title", "Year", "DirectorId"]
+    print(tabulate(movies_data, headers=headers, tablefmt="grid"))
 
 
 def create_movie():
