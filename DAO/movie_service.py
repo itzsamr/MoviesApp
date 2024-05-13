@@ -8,10 +8,16 @@ class MovieService:
         self.cursor = conn.cursor()
 
     def read_movies(self):
-        self.cursor.execute("Select * from Movies")
-        movies_data = [list(row) for row in self.cursor.fetchall()]
-        headers = ["MovieId", "Title", "Year", "DirectorId"]
-        print(tabulate(movies_data, headers=headers, tablefmt="grid"))
+        try:
+            self.cursor.execute("Select * from Movies")
+            movies_data = [list(row) for row in self.cursor.fetchall()]
+            headers = ["MovieId", "Title", "Year", "DirectorId"]
+            print(tabulate(movies_data, headers=headers, tablefmt="grid"))
+        except Exception as e:
+            print(e)
+        finally:
+            self.cursor.close()
+            self.conn.close()
 
     def create_movie(self, movie):
         self.cursor.execute(

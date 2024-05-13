@@ -89,5 +89,5 @@ if __name__ == "__main__":
         elif choice == 4:
             break
 
-    cursor.close()
-    conn.close()
+    # cursor.close()
+    # conn.close()
