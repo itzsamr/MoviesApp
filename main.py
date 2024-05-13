@@ -1,5 +1,6 @@
 import pyodbc
 from tabulate import tabulate
+from Entity.movie import *
 
 server_name = "SAMAR\\MSSQLSERVER01"
 database_name = "MoviesDB"
@@ -46,13 +47,6 @@ class MovieService:
     def delete_movie(self, movie_id):
         cursor.execute("Delete from Movies Where MovieId = ?", movie_id)
         conn.commit()
-
-
-class Movie:
-    def __init__(self, title, year, director_id):
-        self.title = title
-        self.year = year
-        self.director_id = director_id
 
 
 def movie_menu():
