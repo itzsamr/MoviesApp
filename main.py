@@ -1,6 +1,7 @@
 import pyodbc
 from tabulate import tabulate
 from Entity.movie import *
+from DAO.movie_service import *
 
 server_name = "SAMAR\\MSSQLSERVER01"
 database_name = "MoviesDB"
@@ -14,43 +15,13 @@ conn_str = (
 
 print(conn_str)
 conn = pyodbc.connect(conn_str)
-cursor = conn.cursor()
-cursor.execute("Select 1")
-print("Database connection is successful 🎊")
-
-
-class MovieService:
-    def read_movies(self):
-        cursor.execute("Select * from Movies")
-        movies_data = [list(row) for row in cursor.fetchall()]
-        headers = ["MovieId", "Title", "Year", "DirectorId"]
-        print(tabulate(movies_data, headers=headers, tablefmt="grid"))
-
-    def create_movie(self, movie):
-        cursor.execute(
-            "INSERT INTO Movies (Title, Year, DirectorId) VALUES (?, ?, ?)",
-            (movie.title, movie.year, movie.director_id),
-        )
-        conn.commit()
-
-    def update_movie(self, movie, movie_id):
-        cursor.execute(
-            """
-            Update Movies
-            Set Title = ?, Year = ?, DirectorId = ?
-            where MovieId = ?
-            """,
-            (movie.title, movie.year, movie.director_id, movie_id),
-        )
-        conn.commit()
-
-    def delete_movie(self, movie_id):
-        cursor.execute("Delete from Movies Where MovieId = ?", movie_id)
-        conn.commit()
+# cursor = conn.cursor()
+# cursor.execute("Select 1")
+# print("Database connection is successful 🎊")
 
 
 def movie_menu():
-    movie_service = MovieService()
+    movie_service = MovieService(conn)
 
     while True:
         print(
