@@ -1,0 +1,2 @@
+class ActorService:
+    pass
